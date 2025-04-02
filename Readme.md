@@ -63,6 +63,12 @@ Isso iniciará o banco de dados Oracle no container.
 6. Se estiver tudo correto, clique em **Finalizar**.
 ![Oracle Database Setup](./image.png)
 
+## Acessando o banco direto do container:
+```sh
+docker exec -it --user=oracle oracle bash
+sqlplus sys@XEPDB1 as sysdba
+```
+
 ## Importando o Banco de Dados
 
 Para popular o banco de dados, é necessário rodar o script SQL do arquivo `dump.sql` **parágrafo por parágrafo** no DBeaver. Isso evita erros durante a execução.
