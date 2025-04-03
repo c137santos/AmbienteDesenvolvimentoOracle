@@ -16,7 +16,7 @@ cd <NOME_DO_REPOSITORIO>
 Acesse o diretório `dockerOracle` e execute o seguinte comando:
 
 ```sh
-cd dockerOracle
+cd DockerOracle
 ./buildContainerImage.sh -v 21.3.0 -x
 ```
 
@@ -37,13 +37,15 @@ Verifique se a imagem `oracle/database:21.3.0-xe` aparece na lista.
 Para iniciar o container com Oracle XE, execute:
 
 ```sh
-docker run --name oracle \
-    -d \
-    -p 51521:1521 \
-    -p 55500:5500 \
-    -e ORACLE_PWD=SENHA \
-    -e ORACLE_CHARACTERSET=AL32UTF8 \
-    oracle/database:21.3.0-xe
+docker-compose up -d
+```
+
+Isso iniciará o banco de dados Oracle no container.
+
+Para parar o container, execute:
+
+```sh
+docker-compose down
 ```
 
 Isso iniciará o banco de dados Oracle no container.

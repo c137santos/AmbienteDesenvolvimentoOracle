@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  oracle:
+    image: oracle/database:21.3.0-xe
+    container_name: oracle
+    ports:
+      - "51521:1521"
+      - "55500:5500"
+    environment:
+      ORACLE_PWD: "SENHA"
+      ORACLE_CHARACTERSET: "AL32UTF8"
+    restart: always
