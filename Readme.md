@@ -56,14 +56,19 @@ Isso iniciará o banco de dados Oracle no container.
 2. Clique em **Nova Conexão**.
 3. Escolha **Oracle** como o tipo de banco.
 4. Insira as seguintes informações:
-   - **Host:** `localhost`
+   - **Host:** `localhost` para linux e `172.27.246.115` para windows
    - **Porta:** `51521`
    - **Database:** `XE` com o tipo `syd`
    - **Usuário:** `sys`
    - **Senha:** `SENHA`
 5. Clique em **Testar Conexão** para validar.
 6. Se estiver tudo correto, clique em **Finalizar**.
+
+### Imagem Windows
 ![Oracle Database Setup](./image.png)
+
+### Imagem Linux
+![Oracle Database Setup](./dbaverLinux.png)
 
 ## Acessando o banco direto do container:
 ```sh
