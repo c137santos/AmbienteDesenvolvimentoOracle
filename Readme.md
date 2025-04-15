@@ -50,7 +50,10 @@ docker-compose down
 
 Isso iniciará o banco de dados Oracle no container.
 
-## Conectando no DBeaver
+## Conectando no DBeaver ADM
+
+Se quiser entrar como administrador, a conexão é para banco XE, mas essa é extremamente pesada para o Dbeaver lidar. 
+Melhor acessar o banco direto do conteiner e criar um usuário mais limitado para lidar com as querys. 
 
 1. Abra o DBeaver.
 2. Clique em **Nova Conexão**.
@@ -70,11 +73,38 @@ Isso iniciará o banco de dados Oracle no container.
 ### Imagem Linux
 ![Oracle Database Setup](./dbaverLinux.png)
 
+
 ## Acessando o banco direto do container:
+
+Esse banco é mais limitado e não lidar com a leitura de todos as tabelas coração do oracle.
+Acesse via linha de comando e crie um usuário para o desenvolvedor.
+
 ```sh
 docker exec -it --user=oracle oracle bash
 sqlplus sys@XEPDB1 as sysdba
 ```
+
+## Criando um usuário para o desenvolvedor
+
+```sh
+CREATE USER RH IDENTIFIED BY SENHA_RH;
+GRANT CONNECT, RESOURCE TO RH;
+ALTER USER RH QUOTA UNLIMITED ON USERS;
+```
+
+## Conectando dbaver como desenvolver 
+
+1. Abra o DBeaver.
+2. Clique em **Nova Conexão**.
+3. Escolha **Oracle** como o tipo de banco.
+4. Insira as seguintes informações:
+   - **Host:** `localhost` para linux e `172.27.246.115` para windows
+   - **Porta:** `51521`
+   - **Database:** `XEPDB1` com o tipo `service name`
+   - **Usuário:** `RH`
+   - **Senha:** `SENHA_RH`
+5. Clique em **Testar Conexão** para validar.
+6. Se estiver tudo correto, clique em **Finalizar**.
 
 ## Importando o Banco de Dados
 
